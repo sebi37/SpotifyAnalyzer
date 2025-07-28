@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 
 # Schritt 1: CSV-Datei laden
-df = pd.read_csv("./data/datasetSpotify.csv")  # Passe den Dateinamen ggf. an
+df = pd.read_csv("./data/datasetSpotify.csv")
 
 # Schritt 2: Überblick über die Daten
 print("Erste Einträge im Datensatz:")
