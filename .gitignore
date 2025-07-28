@@ -21,6 +21,7 @@ __pycache__/
 # Sonstiges
 *.log
 *.sqlite3
+.cache
 
 # Ordner außerhalb des Repos ignorieren
 ../
