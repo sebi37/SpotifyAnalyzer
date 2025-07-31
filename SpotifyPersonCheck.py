@@ -45,3 +45,40 @@ for item in top_tracks['items']:
 print("\n🎼 Meistgehörte Genres:")
 for genre, count in genre_counter.most_common(10):
     print(f"{genre}: {count}x")
+
+# Grobe Genre-Zuordnung
+übergenre_map = {
+    "metal": "Metalhead",
+    "death metal": "Metalhead",
+    "black metal": "Metalhead",
+    "rock": "Rocker",
+    "hard rock": "Rocker",
+    "punk": "Rocker",
+    "edm": "Electro",
+    "electronic": "Electro",
+    "house": "Electro",
+    "techno": "Electro",
+    "dubstep": "Dubstep",
+    "pop": "Pop-Liebhaber",
+    "indie pop": "Indie",
+    "synthpop": "Indie",
+    "hip hop": "Hip-Hop Fan",
+    "trap": "Hip-Hop Fan",
+    "rap": "Hip-Hop Fan",
+    "indie rock": "Indie",
+    "alternative": "Indie"
+}
+
+übergenre_counter = Counter()
+
+for genre, count in genre_counter.items():
+    for key in übergenre_map:
+        if key in genre:
+            übergenre_counter[übergenre_map[key]] += count
+            break
+
+if übergenre_counter:
+    top_typ = übergenre_counter.most_common(1)[0][0]
+    print(f"\n🧠 Musikprofil: Du bist wahrscheinlich ein/e {top_typ}!")
+else:
+    print("Keine eindeutige Genre-Zuordnung gefunden.")
