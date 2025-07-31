@@ -21,9 +21,9 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     scope="user-top-read"
 ))
 
-print("🎧 Deine meistgehörten Songs (letzte 4 Wochen):\n")
+print("🎧 Deine meistgehörten Songs:\n")
 
-top_tracks = sp.current_user_top_tracks(limit=10, time_range='short_term')
+top_tracks = sp.current_user_top_tracks(limit=10, time_range='long_term')
 
 for idx, item in enumerate(top_tracks['items']):
     name = item['name']
@@ -45,6 +45,18 @@ for item in top_tracks['items']:
 print("\n🎼 Meistgehörte Genres:")
 for genre, count in genre_counter.most_common(10):
     print(f"{genre}: {count}x")
+
+# Diagramm der häufigsten Genres anzeigen
+import matplotlib.pyplot as plt
+
+genres, counts = zip(*genre_counter.most_common(10))
+plt.figure(figsize=(10, 6))
+plt.bar(genres, counts)
+plt.title("Top 10 meistgehörte Genres")
+plt.ylabel("Anzahl")
+plt.xticks(rotation=45, ha="right")
+plt.tight_layout()
+plt.show()
 
 # Grobe Genre-Zuordnung
 übergenre_map = {
